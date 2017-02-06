@@ -2,3 +2,12 @@ sudo: false
 language: node_js
 node_js:
 - stable
+deploy:
+  provider: npm
+  email: max@kupibilet.ru
+  api_key:
+    secure: mqFNV9SGPrdUSPGeYDhzPn0ReFtHsl23BbUN1oIYFZhBcykm9wdAlrAQFrWO1I0TXKn9ofWxUVauI99mln99oLtfqgir/53jB+XDad6RLnMgjeDobN+b33IesVTACtwA5BI2W4wF0bTXCe9hSPNoqj6n3vf+cM7GIx44yLyBH/Xgg/2Qt+3eMtecgFS/4pJ+uMBktXJIQ0/XYozROyfBm3so9Ro17vLYz1p++pmsgHXyD7k+79lZOOOSFf8dPHsBQSOdgbfydD9xgIAOIjmZ1PKUeiPmgq2164wwJAsbzzTbta+QNLvTpuAmqgrVHkToa8L63UKlj5yHK2h0Pa/VORPiH32mnOug8VNCb13sg9GqL0lfbb9SuAFQPGQdY9l3Ro/mNCQbA3UFLsN9kwE2Tj7klv4u1QJb+d/pFkJdmKwXhpTdnHxVDeE/rSiWgG3ZbLdP9suTBHbULTEMnWwua7SWe7uMb8QZ6O45A+rgKSZLwm2KABSavqI82PTAodAYomD8VSjkAVIb2lOoL0t2BqP3cKjQtU9MFhO/Bn+mRG+ozXWnEK8ornJ5Sst58RB+unWC/3vrBsYb9z7/y2a+YXQe6QTXvJV+Lmy0W5y6A7k09VLHyaYGq9cwVanpu/HswCjj54kaTIEeOul2acwB4PdmowOvJpauxBaYuBVxiWw=
+  on:
+    branch: master
+    tags: true
+    repo: kupibilet-frontend/move-binaries-to-bin
