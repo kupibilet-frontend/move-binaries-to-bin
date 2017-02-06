@@ -8,6 +8,13 @@
 
 If you use [eslint](http://eslint.org/)/[styleint](https://github.com/stylelint/stylelint) or another executable package as dependency (see [eslint-config-kupibilet](https://github.com/kupibilet-frontend/eslint-config-kupibilet)), [yarn](yarnpkg.com) and [pnpm](https://github.com/pnpm/pnpm) will not install binaries into `./node_modules/.bin`. This script will help you to move binaries after installation.
 
+### Supported packages
+
+* [eslint](http://eslint.org/)@^3.15.0
+* [stylelint](https://stylelint.io/)@^7.8.0
+
+Feel free to submit issues for any of packages.
+
 ## Install
 
 ```sh
