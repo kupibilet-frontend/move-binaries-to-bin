@@ -10,9 +10,12 @@
     "move-bin": "./bin/move-bin.js"
   },
   "devDependencies": {
-    "eslint-config-kupibilet": "^6.1.0"
+    "eslint-config-kupibilet": "^8.0.2"
   },
   "scripts": {
+    "move-bin": "node -e 'require(\"./index\")()'",
+    "lint": "eslint index.js bin/move-bin.js",
+    "test": "npm run move-bin && npm run lint",
     "postversion": "git push --follow-tags"
   }
 }
