@@ -1,4 +1,4 @@
-const { symlinkSync, unlinkSync } = require('fs')
+const { symlinkSync, unlinkSync, statSync } = require('fs')
 
 const nodeModules = `${process.cwd()}/node_modules`
 
@@ -18,9 +18,14 @@ deps.forEach((item) => {
     unlinkSync(`${nodeModules}/.bin/${item}`)
   } catch (error) {
   }
+
   try {
-    symlinkSync(`${nodeModules}/${binary}`, `${nodeModules}/.bin/${item}`)
-  } catch (error) {
+    statSync(`${nodeModules}/${binary}`)
+  } catch (err) {
     console.log(`${binary} not found, ${item} is skipped`)
+    return false
   }
+
+  symlinkSync(`${nodeModules}/${binary}`, `${nodeModules}/.bin/${item}`)
+  console.log(`binary for ${item} is created`)
 })
