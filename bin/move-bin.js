@@ -1,3 +1,3 @@
-const moveBin = require('../index.js')
+const moveBin = require('move-binaries-to-bin/index.js')
 
 moveBin()
