@@ -13,3 +13,6 @@
 [daviddm-dev-url]: https://david-dm.org/kupibilet-frontend/move-binaries-to-bin#info=devDependencies)
 [npm-img]: https://badge.fury.io/js/move-binaries-to-bin.svg
 [npm-url]: https://www.npmjs.com/package/move-binaries-to-bin
+
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/kupibilet-frontend/move-binaries-to-bin.svg)](https://greenkeeper.io/)
