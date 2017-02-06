@@ -34,7 +34,7 @@ const pathToBinary = {
   stylelint: 'stylelint/bin/stylelint.js',
 }
 
-deps.forEach((item) => {
+module.exports = () => deps.forEach((item) => {
   const binary = pathToBinary[item]
   const getStat = () => stat(`${nodeModules}/${binary}`)
 
