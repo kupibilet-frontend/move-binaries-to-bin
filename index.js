@@ -16,7 +16,7 @@ const stat = (path) => new Promise((resolve, reject) => {
 
 const symlink = (target, path, type) => new Promise((resolve, reject) => {
   fs.symlink(target, path, type, (err) => {
-    if (err) return reject (err)
+    if (err) return reject(err)
     return resolve()
   })
 })
