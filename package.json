@@ -1,6 +1,6 @@
 {
   "name": "move-binaries-to-bin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Move binaries from source to node_modules/.bin",
   "main": "index.js",
   "repository": "https://github.com/kupibilet-frontend/move-binaries-to-bin.git",
