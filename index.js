@@ -1,4 +1,26 @@
-const { symlinkSync, unlinkSync, statSync } = require('fs')
+const fs = require('fs')
+
+const unlink = (path) => new Promise((resolve, reject) => {
+  fs.unlink(path, (err) => {
+    if (err) return reject(err)
+    return resolve()
+  })
+})
+
+const stat = (path) => new Promise((resolve, reject) => {
+  fs.stat(path, (err, stats) => {
+    if (err) return reject(err)
+    return resolve(stats)
+  })
+})
+
+const symlink = (target, path, type) => new Promise((resolve, reject) => {
+  fs.symlink(target, path, type, (err) => {
+    if (err) return reject (err)
+    return resolve()
+  })
+})
+
 
 const nodeModules = `${process.cwd()}/node_modules`
 
@@ -14,18 +36,15 @@ const pathToBinary = {
 
 deps.forEach((item) => {
   const binary = pathToBinary[item]
-  try {
-    unlinkSync(`${nodeModules}/.bin/${item}`)
-  } catch (error) {
-  }
+  const getStat = () => stat(`${nodeModules}/${binary}`)
 
-  try {
-    statSync(`${nodeModules}/${binary}`)
-  } catch (err) {
-    console.log(`${binary} not found, ${item} is skipped`)
-    return false
-  }
-
-  symlinkSync(`${nodeModules}/${binary}`, `${nodeModules}/.bin/${item}`)
-  console.log(`binary for ${item} is created`)
+  unlink(`${nodeModules}/.bin/${item}`).then(
+    getStat,
+    getStat
+  ).then(
+    () => symlink(`${nodeModules}/${binary}`, `${nodeModules}/.bin/${item}`).then(
+      () => console.log(`symlink for ${item} created`)
+    ),
+    () => console.log(`${binary} not found, ${item} is skipped`)
+  )
 })
