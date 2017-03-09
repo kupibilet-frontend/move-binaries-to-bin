@@ -10,7 +10,7 @@
     "move-bin": "./bin/move-bin.js"
   },
   "devDependencies": {
-    "eslint-config-kupibilet": "^8.0.2"
+    "eslint-config-kupibilet": "^8.2.1"
   },
   "scripts": {
     "move-bin": "node -e 'require(\"./index\")()'",
