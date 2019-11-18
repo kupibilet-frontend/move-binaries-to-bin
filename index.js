@@ -27,6 +27,7 @@ const nodeModules = `${process.cwd()}/node_modules`
 const deps = [
   'eslint',
   'stylelint',
+  'prettier',
 ]
 
 const pathToBinary = {
