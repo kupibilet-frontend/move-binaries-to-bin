@@ -33,19 +33,25 @@ const deps = [
 const pathToBinary = {
   eslint: 'eslint/bin/eslint.js',
   stylelint: 'stylelint/bin/stylelint.js',
+  prettier: 'prettier/bin-prettier.js',
 }
 
 module.exports = () => deps.forEach((item) => {
   const binary = pathToBinary[item]
-  const getStat = () => stat(`${nodeModules}/${binary}`)
 
-  unlink(`${nodeModules}/.bin/${item}`).then(
-    getStat,
-    getStat
-  ).then(
-    () => symlink(`${nodeModules}/${binary}`, `${nodeModules}/.bin/${item}`).then(
-      () => console.log(`symlink for ${item} created`)
-    ),
-    () => console.log(`${binary} not found, ${item} is skipped`)
-  )
+  /* eslint-disable promise/prefer-await-to-then */
+  unlink(`${nodeModules}/.bin/${item}`)
+    .catch(() => {})
+    .then(() => (
+      stat(`${nodeModules}/${binary}`)
+    ))
+    .then(() => (
+      symlink(`${nodeModules}/${binary}`, `${nodeModules}/.bin/${item}`)
+    ))
+    .then(() => (
+      console.log(`symlink for ${item} created`)
+    ))
+    .catch(() => (
+      console.log(`${binary} not found, ${item} is skipped`)
+    ))
 })
